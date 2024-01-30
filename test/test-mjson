@@ -1,0 +1,38 @@
+#!/usr/bin/env escript
+%% -*- erlang -*-
+%%! -noinput -pa ebin -pa ../ebin
+
+main(Args) ->
+    case Args of
+        [File] ->
+            %% called from run_tests.py
+            try
+                {ok, Bin} = file:read_file(File),
+                case mjson:decode(Bin) of
+                    {ok, _} ->
+                        halt(0);
+                    {error, _} ->
+                        halt(1)
+                end
+            catch
+                _:_ ->
+                    halt(1)
+            end;
+        ["--roundtrip" | Files] ->
+            %% called from make
+            lists:foreach(
+              fun(File) ->
+                      io:format("Testing ~s...", [File]),
+                      {ok, Bin} = file:read_file(File),
+                      {ok, V} = mjson:decode(Bin),
+                      IoL1 = mjson:encode(V),
+                      IoL2 = mjson:encode(V, #{compact => true}),
+                      IoL3 = mjson:encode(V, #{sort_objects => true}),
+                      true = ({ok, V} == mjson:decode(iolist_to_binary(IoL1))),
+                      true = ({ok, V} == mjson:decode(iolist_to_binary(IoL2))),
+                      true = ({ok, V} == mjson:decode(iolist_to_binary(IoL3))),
+                      io:format("ok\n", [])
+              end,
+              Files)
+    end.
+

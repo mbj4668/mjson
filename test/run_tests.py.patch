@@ -1,0 +1,15 @@
+diff --git run_tests.py run_tests.py
+index 462edb6..4c88e06 100755
+--- run_tests.py
++++ run_tests.py
+@@ -21,6 +21,10 @@ INVALID_BINARY_FORMAT = 8
+ BAD_CPU_TYPE = 86
+ 
+ programs = {
++    "mjson": {
++        "url":"https://github.com/mbj4668/mjson",
++        "commands":["test/test-mjson"]
++    },
+     # "Awk JSON.awk busybox":
+     #     {
+     #         "url":"https://github.com/step-/JSON.awk",
