@@ -29,13 +29,13 @@ Represents a JSON array.
 ### <a name="type_num">num()</a>
 
 Represents a JSON number.
-<pre><code>-type <a href="#type_num">num()</a>     :: <a href="#type_number">number()</a>.
+<pre><code>-type <a href="#type_num">num()</a>     :: number().
 </code></pre>
 
 ### <a name="type_str">str()</a>
 
 Represents a JSON string.
-<pre><code>-type <a href="#type_str">str()</a>     :: <a href="#type_binary">binary()</a>.
+<pre><code>-type <a href="#type_str">str()</a>     :: binary().
 </code></pre>
 
 ### <a name="type_literal">literal()</a>
@@ -53,7 +53,7 @@ When encoding, object member names can be atoms and iodata.
 ### <a name="type_enc_str">enc_str()</a>
 
 When encoding, atoms and binaries will be encoded as JSON strings.
-<pre><code>-type <a href="#type_enc_str">enc_str()</a> :: <a href="#type_binary">binary()</a> | atom().
+<pre><code>-type <a href="#type_enc_str">enc_str()</a> :: binary() | atom().
 </code></pre>
 
 ### <a name="type_encode_opts">encode_opts()</a>
@@ -75,7 +75,7 @@ Options for `encode/2`.
 ## Functions
 ### <a name="func_decode">decode/1</a>
 
-<pre><code>-spec decode(<a href="#type_binary">binary()</a>) -> {ok, <a href="#type_val">val()</a>}.
+<pre><code>-spec decode(binary()) -> {ok, <a href="#type_val">val()</a>}.
 </code></pre>
 If `Bin` does not contain valid JSON, `decode/1` crashes.
 
