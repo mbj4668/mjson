@@ -7,6 +7,71 @@ RFC 8259 compliant.
 
 Passes all tests in https://github.com/nst/JSONTestSuite.
 
+Useful when a simple, basic JSON encoder / decoder is needed.
+
+
+# Erlang representation of JSON
+
+```
+JSON           Erlang
+====           ======
+object         map
+array          list
+string         binary
+number         integer | float
+literal        atom
+```
+
+Note that there are three JSON literals `true`, `false`, and `null`,
+and they are decoded into the corresponding atoms `'true'`, `'false'`,
+and `'null'`.
+
+For example, the following JSON value:
+```json
+{
+  "id": 198030,
+  "sizes": [7.0, 12.0],
+  "valid": false
+}
+```
+is decoded to the Erlang term:
+```erlang
+#{
+  <<"id">> => 19830,
+  <<"sizes">> => [7.0, 12.0],
+  <<"valid">> => false
+ }
+```
+
+## Encoding
+
+In addition to the representation described above, the encoder
+encodes Erlang atoms into JSON strings (except for the atoms `'true'`,
+`'false'`, and `'null'`), and also encodes Erlang map keys of type
+iodata to JSON strings.
+
+For example, the following Erlang term:
+```erlang
+#{
+  "bar" => baz,
+  foo => null
+ }
+```
+is encoded to:
+```json
+{
+  "bar": "baz",
+  "foo": null
+}
+```
+which is decoded to:
+```erlang
+#{
+  <<"bar">> => <<"baz">>,
+  <<"foo">> => null
+ }
+```
+
 # API documentation
 
 See [mjson.md](doc/mjson.md).
