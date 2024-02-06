@@ -9,7 +9,7 @@ dep_JSONTestSuite = git https://github.com/nst/JSONTestSuite
 include erl.mk
 
 erl.mk:
-	curl -O https://raw.githubusercontent.com/mbj4668/erl.mk/main/$@
+	curl -s -O https://raw.githubusercontent.com/mbj4668/erl.mk/main/$@
 
 all: doc/mjson.md
 
