@@ -1,0 +1,10 @@
+{
+    "lists": [42, 1.001],
+    "maps": {
+        "nosuchatom": null,
+        "string": ""
+    },
+    "xxbool1": false,
+    "true": true
+}
+

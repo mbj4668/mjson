@@ -9,18 +9,15 @@ Passes all tests in https://github.com/nst/JSONTestSuite.
 
 Useful when a simple, basic JSON encoder / decoder is needed.
 
-
 # Erlang representation of JSON
 
-```
-JSON           Erlang
-====           ======
-object         map
-array          list
-string         binary
-number         integer | float
-literal        atom
-```
+JSON type    | Erlang type
+-------------|----------------------------------
+`object`     | `map`
+`array`      | `list`
+`string`     | `binary`
+`number`     | `integer \| float`
+`literal`    | `atom`
 
 Note that there are three JSON literals `true`, `false`, and `null`,
 and they are decoded into the corresponding atoms `'true'`, `'false'`,
@@ -42,6 +39,13 @@ is decoded to the Erlang term:
   <<"valid">> => false
  }
 ```
+
+If the option `key_as_existing_atom` is given when decoding, object
+member names are converted to existing atoms.  If the atom doesn't
+exist, the object member name is returned as a binary.
+
+The `key_as_existing_atom` option is useful when the schema for the
+JSON document is known, and all keys are already present in the code.
 
 ## Encoding
 

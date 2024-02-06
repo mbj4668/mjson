@@ -77,6 +77,20 @@ Options for `encode/2`.
 
 <pre><code>-spec decode(binary()) -> {ok, <a href="#type_val">val()</a>}.
 </code></pre>
+### <a name="func_decode">decode/1</a>
+
+<pre><code>-spec decode(binary(), <a href="#type_decode_opts">decode_opts()</a>) -> {ok, <a href="#type_val">val()</a>}.
+</code></pre>
+If `Bin` does not contain valid JSON, `decode/1` crashes.
+
+### <a name="func_decode">decode/2</a>
+
+<pre><code>-spec decode(binary()) -> {ok, <a href="#type_val">val()</a>}.
+</code></pre>
+### <a name="func_decode">decode/2</a>
+
+<pre><code>-spec decode(binary(), <a href="#type_decode_opts">decode_opts()</a>) -> {ok, <a href="#type_val">val()</a>}.
+</code></pre>
 If `Bin` does not contain valid JSON, `decode/1` crashes.
 
 ### <a name="func_encode">encode/1</a>
